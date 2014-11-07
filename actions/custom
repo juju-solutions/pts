@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+# We're just sourcing the central benchmark, typically people will just put
+# their benchmarks in one file.
+. actions/benchmark
+
+params=`action-get tests`
+run_benchmark $params

@@ -1,0 +1,10 @@
+# Deploy
+
+juju deploy pts # duh
+
+
+# List actions?
+
+juju actions pts
+
+

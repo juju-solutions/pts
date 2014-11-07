@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+run_benchmark() {
+    params="$@"
+
+    mkdir -p /opt/pts/results
+    rm -rf /root/.phoronix-test-suite
+    cp -Rpf files/dotfile-phoronix-test-suite /root/.phoronix-test-suite
+
+    run=`date +%s`
+
+    echo 'Y N N' | phoronix-test-suite batch-install $params > /dev/null 2>&1
+
+    phoronix-test-suite batch-run $params
+    rsync -aqz /root/.phoronix-test-suite /opt/pts/results/$run
+}
