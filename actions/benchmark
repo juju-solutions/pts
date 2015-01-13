@@ -3,6 +3,8 @@
 set -e
 
 run_benchmark() {
+    action-set meta.start=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+
     params="$@"
 
     mkdir -p /opt/pts/results
@@ -15,4 +17,6 @@ run_benchmark() {
 
     phoronix-test-suite batch-run $params
     rsync -aqz /root/.phoronix-test-suite /opt/pts/results/$run
+
+    action-set meta.stop=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
 }
