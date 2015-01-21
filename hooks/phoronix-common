@@ -39,7 +39,7 @@ build_testsuites() {
   juju-log "pts: building test config: ${pts_mode}"
 
   if [ $pts_mode = 'full' ]; then
-    # get each one and concat it all with some space padding    
+    # get each one and concat it all with some space padding
     local sys=$(config-get pts_sys)
     local cpu=$(config-get pts_cpu)
     local mem=$(config-get pts_mem)
@@ -51,7 +51,7 @@ build_testsuites() {
     local tmp=$(config-get pts_custom)
     if [ -z $tmp ]; then
       echo " " # otherwise facter gets angry
-    else 
+    else
       echo "${tmp}"
     fi
   else
@@ -98,7 +98,7 @@ stop_test() {
 
 clear_facts() {
   juju-log "puppet facter reset"
-  fact-del phoronix-testsuite 2>&1 > /dev/null || : 
+  fact-del phoronix-testsuite 2>&1 > /dev/null || :
   fact-del phoronix-testdir   2>&1 > /dev/null || :
 }
 
@@ -107,7 +107,7 @@ install_phoronix() {
   clear_facts
   stop_test
   apt-get -qq update
-  apt-get install -qqy unzip build-essential default-jre-headless
+  apt-get install -qqy unzip build-essential default-jre-headless mesa-utils
   apt-get install -qqy phoronix-test-suite
 
   # puppet helper to distribute facts between scripts
