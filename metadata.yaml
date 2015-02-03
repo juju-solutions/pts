@@ -5,5 +5,5 @@ description: |
   individual stress tests and runs them via upstart job
 requires:
     benchmark:
-        interface: juju-info
+        interface: benchmark
         scope: container
