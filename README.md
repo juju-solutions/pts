@@ -1,5 +1,8 @@
 Requires Juju 1.23 or later
 
+
+Phoronix Test Suite (PTS) is a comprehensive testing and benchmarking suite.
+
 # Deploy
 
 ```
@@ -74,3 +77,9 @@ timing:
   enqueued: 2015-03-23 17:51:59 +0000 UTC
   started: 2015-03-23 17:52:03 +0000 UTC
 ```
+
+# Maintainer
+Adam Israel <aisrael@canonical.com>
+
+# Upstream
+http://www.phoronix-test-suite.com/
