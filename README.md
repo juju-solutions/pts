@@ -3,7 +3,9 @@
 [Phoronix Test Suite](http://www.phoronix-test-suite.com/) (PTS) is a comprehensive
 testing and benchmarking suite.
 
-This charm requires Juju 1.23 or later.
+This charm requires Juju 1.23 or later and uses [Juju
+Actions](https://jujucharms.com/docs/latest/authors-charm-actions/) to run the
+benchmarks.
 
 
 # Usage
