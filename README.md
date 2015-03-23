@@ -1,33 +1,46 @@
-Requires Juju 1.23 or later
+# Overview
+
+[Phoronix Test Suite](http://www.phoronix-test-suite.com/) (PTS) is a comprehensive
+testing and benchmarking suite.
+
+This charm requires Juju 1.23 or later.
 
 
-Phoronix Test Suite (PTS) is a comprehensive testing and benchmarking suite.
+# Usage
 
-# Deploy
+First bootstrap Juju and then deploy pts:
 
-```
-juju bootstrap
-juju deploy pts
-```
+    juju bootstrap
+    juju deploy pts
 
-# List actions
+# Configuration
 
-```
-juju action defined pts
-cpu: CPU centric stress tests
-custom: Custom stress tests
-io: IO centric tests.
-memory: Memory centric stress tets
-smoke: Smoke test, tests that complete quickly.
-```
+You can list all of the actions available with the following command:
 
-# Run an action
+    juju action defined pts
 
-Choose an action to run, like `smoke`
+This charm supports the following benchmarks:
 
-```
-juju action do pts smoke
-```
+- `cpu`: CPU centric stress tests
+- `custom`: Custom stress tests
+- `io`: IO centric tests.
+- `memory`: Memory centric stress tets
+- `smoke`: Smoke test, tests that complete quickly.
+
+To execute a benchmark you can use a Juju action, in this example we run the cpu
+stress tests on the first pts unit launched:
+
+    juju action do pts/0 cpu
+
+or in this case, do a io test on pts unit 3:
+
+    juju action do pts/3 io
+
+You can also run benchmarks across the entire pts service:
+
+    juju deploy pts             # Deploys one unit
+    juju add-unit -n10 pts      # Add 10 more nodes
+    juju action do pts memory   # Exec the memory benchmark on all 11 pts nodes
 
 # Check on actions
 
@@ -78,8 +91,7 @@ timing:
   started: 2015-03-23 17:52:03 +0000 UTC
 ```
 
-# Maintainer
-Adam Israel <aisrael@canonical.com>
+# Contact Information
 
-# Upstream
-http://www.phoronix-test-suite.com/
+- Maintainer: Adam Israel <aisrael@canonical.com>
+- [Phoronix Test Suite](http://www.phoronix-test-suite.com/) homepage
