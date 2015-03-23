@@ -3,8 +3,7 @@
 set -e
 
 run_benchmark() {
-    benchmark-start || true
-    # action-set meta.start=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+    chlp benchmark-start || true
 
     params="$@"
 
@@ -20,6 +19,5 @@ run_benchmark() {
     rsync -aqz /root/.phoronix-test-suite /opt/pts/results/$run
 
     scripts/parse /opt/pts/results/$run/.phoronix-test-suite/test-results/$(date +%Y)-*/test-1.xml
-    #action-set meta.stop=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
-    benchmark-finish || true
+    chlp benchmark-finish || true
 }
